@@ -8,6 +8,18 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
 
 ## [Unreleased]
 
+## [0.2.0] - 2026-04-23
+
+### Added
+
+- Optional Quartz + GitHub Pages deployment setup under `.github/`.
+- Quartz deployment workflow, config, layout, and deployment guide for publishing `wiki/` as a static site.
+
+### Changed
+
+- Expanded `README.md` to better explain template customization, optional deployment files, repository layout, and `raw/` storage rules.
+- Added a concise root-level Quartz deployment section that links to the full guide in `.github/quartz/README.md`.
+
 ## [0.1.1] - 2026-04-23
 
 ### Changed

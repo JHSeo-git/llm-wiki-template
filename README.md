@@ -3,6 +3,7 @@
 Starter repository for an LLM-maintained wiki.
 
 `raw/` holds immutable source material. An agent reads it and incrementally maintains `wiki/`.
+The defaults are examples, not a fixed product shape. Customize them before using this repo as your source of truth.
 
 ## How It Works
 
@@ -10,6 +11,7 @@ Starter repository for an LLM-maintained wiki.
 - `wiki/` — derived knowledge layer maintained by the agent
 - `schema/` — page format and classification rules
 - `.agents/skills/` — reusable wiki workflows
+- `.github/` — optional Quartz + GitHub Pages deployment setup for publishing `wiki/`
 
 If behavior changes, update `schema/`, `AGENTS.md`, and the skills together.
 
@@ -36,14 +38,22 @@ Copy these paths:
 - `schema/`
 - `raw/`
 - `wiki/`
+- optional: `.github/`
 - optional: `CHANGELOG.md`
 
 Then:
 
 1. Verify `.claude/skills -> ../.agents/skills`
-2. Customize `AGENTS.md`, `schema/`, and `.agents/skills/`
+2. Customize `AGENTS.md`, `schema/`, and `.agents/skills/` for your language, frontmatter, and category model
 3. Add source files to `raw/`
-4. Run `/wiki-ingest`, `/wiki-query`, or `/wiki-lint`
+4. If you want site deployment, keep `.github/` and update the Quartz settings
+5. Run `/wiki-ingest`, `/wiki-query`, or `/wiki-lint`
+
+## Deploy with Quartz
+
+If you want to publish the derived `wiki/` as a static site, this template includes an optional Quartz + GitHub Pages setup under `.github/`.
+
+For setup details, configuration notes, and the full deploy guide, see [`.github/quartz/README.md`](.github/quartz/README.md).
 
 ## Workflows
 
@@ -63,14 +73,18 @@ Then:
 - Install [qmd](https://github.com/tobi/qmd)
 - Install the [Obsidian Web Clipper](https://chromewebstore.google.com/detail/obsidian-web-clipper/cnjifjpddelmedmihgijeibhnjfabmlf) extension
 - In Obsidian, set **Settings → Files and links → Attachment folder path** to a fixed directory (e.g. `raw/assets/`)
-- In **Settings → Hotkeys**, bind *Download attachments for current file* (e.g. `Cmd+Shift+D`)
+- In **Settings → Hotkeys**, bind _Download attachments for current file_ (e.g. `Cmd+Shift+D`)
 - Install the **Marp** and **Dataview** plugins
 - Track the repository with Git
+- If you want a published site, enable GitHub Pages and keep the Quartz files under `.github/`
 
 ## Layout
 
 ```text
 .
+├── .github/
+│   ├── quartz/
+│   └── workflows/
 ├── .agents/skills/
 ├── .claude/skills -> ../.agents/skills
 ├── raw/
@@ -89,5 +103,7 @@ Then:
 ## Notes
 
 - `raw/` is read-only
+- Store source files flatly under `raw/`; use `raw/assets/` for attachments
 - `index.md`, `log.md`, and `overview.md` are starter meta pages
+- Quartz deployment publishes `wiki/` by default
 - `.obsidian/` contains only portable defaults
