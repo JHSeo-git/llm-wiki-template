@@ -8,6 +8,8 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
 
 ## [Unreleased]
 
+## [0.1.1] - 2026-04-23
+
 ### Changed
 
 - Restructured `README.md` with `How It Works`, `Typical Usage`, and `Recommended Setup` sections covering the Obsidian Web Clipper → `raw/` → `wiki ingest` flow.
