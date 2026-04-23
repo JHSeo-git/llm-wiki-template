@@ -8,9 +8,9 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
 
 ## [Unreleased]
 
-### Added
+### Changed
 
-- Placeholder for upcoming template changes.
+- Restructured `README.md` with `How It Works`, `Typical Usage`, and `Recommended Setup` sections covering the Obsidian Web Clipper → `raw/` → `wiki ingest` flow.
 
 ## [0.1.0] - 2026-04-21
 
