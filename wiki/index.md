@@ -5,14 +5,15 @@ tags:
   - meta
   - navigation
   - index
-aliases: []
+aliases:
+  - Wiki Index
 domain: research
 status: active
 related:
-  - "[[Wiki Overview]]"
-  - "[[Change Log]]"
+  - "[[overview|Wiki Overview]]"
+  - "[[log|Change Log]]"
 created: 2026-04-21
-updated: 2026-04-21
+updated: 2026-04-28
 ---
 
 # Wiki Index

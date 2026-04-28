@@ -20,6 +20,8 @@ Workflow for checking the wiki's consistency and overall health.
    - **Missing pages**: Find `[[wiki-links]]` that point to pages that do not exist.
    - **Missing cross-references**: Identify closely related pages that are not linked to each other.
    - **Frontmatter validation**: Check for missing required fields or invalid `type`, `domain`, or `status` values.
+   - **Title alias presence**: Every page must include its `title` verbatim as the first entry in `aliases` (per "Wiki Link Resolution" in `conventions.md`). Pages missing this break `[[Title]]` resolution from other pages.
+   - **Navigation hub link form**: In `wiki/index.md`, every `[[...]]` link should use the explicit `[[file-slug|Display Title]]` form. Plain `[[Title]]` in the index hub is brittle when Obsidian's alias cache lags.
    - **Empty sections**: Find sections that exist but have no content.
 3. **Report findings**: Report findings to the user by category.
 4. **Fix what can be fixed**: After user approval, apply safe automatic fixes such as frontmatter completion or added cross-references. Discuss content-level changes with the user first.

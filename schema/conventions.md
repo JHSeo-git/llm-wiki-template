@@ -12,6 +12,43 @@ If a project needs another language, update this file and `AGENTS.md` together.
 - Examples: `reinforcement-learning.md`, `vannevar-bush.md`, `reinforcement-learning-vs-supervised-learning.md`
 - Source summary pages: `YYYY-MM-DD-source-title.md` (example: `2026-04-07-attention-is-all-you-need.md`)
 
+## Wiki Link Resolution
+
+Obsidian resolves `[[...]]` links by **filename** (case-insensitive) or **`aliases`** in frontmatter — not by the `title` field. Because filenames use hyphens (e.g., `reinforcement-learning.md`) while wiki links typically use the natural title with spaces (e.g., `[[Reinforcement Learning]]`), aliases bridge the gap.
+
+### `aliases` rules
+
+Required:
+- The `title` value, verbatim, as the **first** entry in `aliases`. Without this, `[[Title]]` from other pages will not resolve.
+- For source pages with date-prefixed filenames (e.g., `2026-04-07-attention-is-all-you-need.md`), the title alias is what makes references work.
+
+Optional (recommended when relevant):
+- Cross-language form (e.g., `Agent Memory` ↔ `에이전트 메모리`)
+- Abbreviations or alternate names users may search for
+- Hyphenated slug if frequently typed
+
+Example:
+
+```yaml
+title: Reinforcement Learning
+aliases:
+  - Reinforcement Learning   # required: matches title exactly
+  - RL                       # optional: abbreviation for search
+```
+
+### Linking from navigation hubs
+
+For `wiki/index.md` (and any page that functions as a primary navigation hub), prefer the explicit `[[file-slug|Display Title]]` form:
+
+```markdown
+- [[reinforcement-learning|Reinforcement Learning]] — description
+- [[2026-04-07-attention-is-all-you-need|Attention Is All You Need]] — description
+```
+
+Why: alias-based resolution sometimes lags Obsidian's metadata cache, causing the backlinks pane to miss entries. The pipe form resolves directly via filename and guarantees backlinks regardless of indexing state.
+
+Other pages may use the simpler `[[Title]]` form, which resolves through the title alias.
+
 ## YAML Frontmatter
 
 Every wiki page must include the following frontmatter:

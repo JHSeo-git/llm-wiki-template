@@ -8,6 +8,20 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
 
 ## [Unreleased]
 
+## [0.2.1] - 2026-04-28
+
+### Added
+
+- New `Wiki Link Resolution` section in `schema/conventions.md`:
+  - Every page must include its `title` verbatim as the first entry of `aliases` so `[[Title]]` references resolve.
+  - For navigation hubs (e.g., `wiki/index.md`), the explicit `[[file-slug|Display Title]]` form is recommended to guarantee backlinks regardless of Obsidian's alias cache state.
+- New checks in the `wiki-lint` skill: `Title alias presence` and `Navigation hub link form`.
+
+### Changed
+
+- `wiki-ingest` skill steps 3, 4, and 6 now require: (a) including the `title` in `aliases` when creating any new page, and (b) using `[[file-slug|Display Title]]` form when updating `wiki/index.md`.
+- Template meta pages (`wiki/index.md`, `wiki/overview.md`, `wiki/log.md`) backfilled with `title` aliases and converted their `related:` entries to the navigation hub link form.
+
 ## [0.2.0] - 2026-04-23
 
 ### Added
