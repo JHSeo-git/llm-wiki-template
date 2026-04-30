@@ -8,6 +8,17 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
 
 ## [Unreleased]
 
+## [0.2.2] - 2026-04-30
+
+### Changed
+
+- `Wiki Link Resolution` rule in `schema/conventions.md` generalized: the `[[file-slug|Display Title]]` form is now required on **every page** (body text, `related:` frontmatter, source citations) — not just navigation hubs. The previous "Other pages may use the simpler `[[Title]]` form" allowance is removed because alias-based resolution lags Obsidian's metadata cache and breaks the backlinks pane in practice. Section renamed `Linking from navigation hubs` → `Link form (all pages)`. The `aliases` frontmatter (with `title` first) remains required as a search/autocomplete fallback only.
+- Page-structure templates in `schema/conventions.md` (entity, concept, source, synthesis, meta) updated so every example link uses the pipe form.
+- `Cross-References` section in `schema/conventions.md` updated to require `[[file-slug|Display Title]]`; plain `[[page name]]` is now forbidden.
+- `wiki-lint` skill: `Navigation hub link form` check renamed to `Wiki link form (all pages)` and broadened to flag plain `[[Title]]` anywhere. `Orphans` and `Missing pages` checks reworded to specify slug-based resolution. `Title alias presence` description clarified to call aliases a search/autocomplete fallback. Auto-fix step now lists `[[Title]] → [[slug|Title]]` conversion as a safe automatic fix.
+- `wiki-ingest` skill steps 3, 5, 6 updated: (a) alias requirement reframed as fallback, (b) every internal wiki link in body, `related:`, and source citations must use `[[file-slug|Display Title]]`.
+- `wiki-query` skill steps 3 and 5 updated: chat-reply citations and any saved synthesis page (including its `related:` frontmatter and the index entry) must use `[[file-slug|Display Title]]`.
+
 ## [0.2.1] - 2026-04-28
 
 ### Added

@@ -36,18 +36,22 @@ aliases:
   - RL                       # optional: abbreviation for search
 ```
 
-### Linking from navigation hubs
+### Link form (all pages)
 
-For `wiki/index.md` (and any page that functions as a primary navigation hub), prefer the explicit `[[file-slug|Display Title]]` form:
+Every internal wiki link, on every page, must use the explicit `[[file-slug|Display Title]]` form — not just navigation hubs. This applies to:
+
+- Body links: `[[reinforcement-learning|Reinforcement Learning]] — description`
+- `related:` frontmatter entries: `"[[2026-04-07-attention-is-all-you-need|Attention Is All You Need]]"`
+- Source citations inside body text: `[[2026-04-07-attention-is-all-you-need|Attention Is All You Need]]`
 
 ```markdown
 - [[reinforcement-learning|Reinforcement Learning]] — description
 - [[2026-04-07-attention-is-all-you-need|Attention Is All You Need]] — description
 ```
 
-Why: alias-based resolution sometimes lags Obsidian's metadata cache, causing the backlinks pane to miss entries. The pipe form resolves directly via filename and guarantees backlinks regardless of indexing state.
+Why: alias-based resolution lags Obsidian's metadata cache and breaks the backlinks pane in practice — not just in hubs. Plain `[[Title]]` resolves through the title alias when the cache is fresh, but backlinks frequently miss entries. The pipe form resolves directly via filename and guarantees backlinks regardless of indexing state.
 
-Other pages may use the simpler `[[Title]]` form, which resolves through the title alias.
+The `aliases` frontmatter (with `title` as the first entry) remains required as a search/autocomplete fallback, but is not the primary resolution path for `[[...]]` links anymore.
 
 ## YAML Frontmatter
 
@@ -88,11 +92,11 @@ Every wiki page must include the following frontmatter:
 One-paragraph summary.
 
 ## Details
-Key information. Cite supporting sources with links to [[source-summary-pages]].
+Key information. Cite supporting sources with `[[YYYY-MM-DD-source-slug|Source Title]]` links.
 
 ## Related Pages
-- [[related-page-1]]
-- [[related-page-2]]
+- [[related-slug-1|Related Page 1]]
+- [[related-slug-2|Related Page 2]]
 ```
 
 ### `concept` Page
@@ -107,10 +111,10 @@ One-paragraph definition.
 Detailed explanation, with examples where useful.
 
 ## Related Concepts
-- [[related-concept-1]]
+- [[related-concept-slug|Related Concept 1]]
 
 ## Source References
-- [[source-summary-1]]
+- [[YYYY-MM-DD-source-slug|Source Summary 1]]
 ```
 
 ### `source` Summary Page
@@ -130,8 +134,8 @@ Detailed explanation, with examples where useful.
 Why this source matters, and how it connects to or contradicts existing knowledge.
 
 ## Related Pages
-- [[entity-page]] — relationship note
-- [[concept-page]] — relationship note
+- [[entity-slug|Entity Title]] — relationship note
+- [[concept-slug|Concept Title]] — relationship note
 ```
 
 ### `synthesis` Page
@@ -148,8 +152,8 @@ Comparison, synthesis, or a new perspective, with cited support.
 ## Conclusion
 
 ## References
-- [[source-1]]
-- [[source-2]]
+- [[YYYY-MM-DD-source-slug-1|Source 1]]
+- [[YYYY-MM-DD-source-slug-2|Source 2]]
 ```
 
 ### `meta` Page
@@ -164,13 +168,13 @@ What this document does for the wiki.
 Operational information such as indexes, logs, and summaries.
 
 ## Related Documents
-- [[related-document-1]]
-- [[related-document-2]]
+- [[related-doc-slug-1|Related Document 1]]
+- [[related-doc-slug-2|Related Document 2]]
 ```
 
 ## Cross-References
 
-- When mentioning another wiki page, always use a `[[page name]]` wiki link.
+- When mentioning another wiki page, always use the explicit `[[file-slug|Display Title]]` form (per "Link form (all pages)" above). Plain `[[Title]]` is forbidden.
 - When a new entity or concept appears, create a page or update the existing one.
 - When citing a raw source, record its path in the `sources` frontmatter field.
 
